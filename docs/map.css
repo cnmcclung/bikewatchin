@@ -1,0 +1,85 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#map {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#map svg {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#map svg circle {
+  pointer-events: auto;
+  --color-departures: steelblue;
+  --color-arrivals: darkorange;
+  --color: color-mix(
+    in oklch,
+    var(--color-departures) calc(100% * var(--departure-ratio)),
+    var(--color-arrivals)
+  );
+  fill: var(--color);
+  fill-opacity: 0.6;
+  stroke: white;
+  stroke-width: 1;
+}
+
+header {
+  display: flex;
+  gap: 1em;
+  align-items: baseline;
+  margin-bottom: 0.5em;
+}
+
+header label {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+header label time {
+  display: block;
+}
+
+header label em {
+  display: block;
+  color: gray;
+  font-style: italic;
+  font-size: 0.85em;
+}
+
+.legend {
+  display: flex;
+  gap: 1px;
+  margin-block: 1em;
+  --color-departures: steelblue;
+  --color-arrivals: darkorange;
+}
+
+.legend > div {
+  flex: 1;
+  padding: 0.4em 1em;
+  text-align: center;
+  font-size: 0.85em;
+  --color: color-mix(
+    in oklch,
+    var(--color-departures) calc(100% * var(--departure-ratio)),
+    var(--color-arrivals)
+  );
+  background: var(--color);
+  color: white;
+  font-weight: 600;
+}
